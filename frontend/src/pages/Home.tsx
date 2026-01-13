@@ -1,5 +1,6 @@
 import AboutUs from "../components/AboutUs"
 import Banner from "../components/Banner"
+import Footer from "../components/Footer"
 import Hero from "../components/Hero"
 import Nav from "../components/Nav"
 import OurSpeciality from "../components/OurSpeciality"
@@ -15,6 +16,7 @@ const Home = () => {
       <AboutUs/>
       <OurSpeciality/>
       <TopSpeciality/>
+      <Footer/>
     </div>
   )
 }

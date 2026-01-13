@@ -1,4 +1,4 @@
-
+import testdoc from '../assets/testdoctor1.jpg'
 
 const TopSpeciality = () => {
     const doctor:{ name: string, department:string,place:string }[]=[
@@ -15,8 +15,11 @@ const TopSpeciality = () => {
 
         <div className="flex flex-col sm:flex-row gap-8 mt-10">
             {doctor.map(doc=>(
-                <div className="flex  flex-col bg-white rounded-lg w-[300px]  h-[350px] shadow-lg">
-                    {doc.name}
+                <div className="flex  flex-col bg-white rounded-lg w-[300px]  h-[350px] shadow-lg p-6 gap-4">
+           <img src={testdoc} alt="" className='rounded-lg shadow' />
+           <h1 className='text-xl font-semibold'>Dr. {doc.name}</h1>
+           <p className='text-sm font-semibold text-gray-500'>{doc.department}</p>
+           <button className='bg-gradient-to-r from-[#0096FF] to-[#B3F5FF] px-4 py-2 font-semibold text-lg rounded-lg text-white'>Book now</button>
                 </div>
             ))}
         </div>
