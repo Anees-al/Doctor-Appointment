@@ -15,7 +15,9 @@ const TopSpeciality = () => {
 
         <div className="flex flex-col sm:flex-row gap-8 mt-10">
             {doctor.map(doc=>(
-                <div className="flex  flex-col bg-white rounded-lg w-[300px]  h-[350px] shadow-lg"></div>
+                <div className="flex  flex-col bg-white rounded-lg w-[300px]  h-[350px] shadow-lg">
+                    {doc.name}
+                </div>
             ))}
         </div>
     </div>
