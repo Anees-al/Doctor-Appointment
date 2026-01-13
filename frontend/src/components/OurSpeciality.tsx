@@ -1,4 +1,5 @@
-
+import { TbClover } from "react-icons/tb";
+import {motion} from  'framer-motion'
 
 const OurSpeciality = () => {
    const department:{ name: string, num: number }[]=[
@@ -16,7 +17,7 @@ const OurSpeciality = () => {
   return (
     <div className="flex flex-col bg-white mt-5 w-full h-auto p-4">
       <div className="flex flex-col items-center justify-center mt-10 ">
-        <h1 className="text-2xl text-white bg-gradient-to-r from-[#0096FF] to-[#00EDFF] px-4 py-2 rounded-lg font-semibold">Our speciality</h1>
+        <h1 className="text-2xl text-white bg-gradient-to-r from-[#0096FF] to-[#00EDFF] px-4 py-2 rounded-lg font-bold">  <motion.span className='inline-flex items-center justify-center w-6 h-6 mr-1' animate={{rotate:360}}  transition={{ repeat: Infinity, duration: 4, ease: "linear" }}><TbClover  /></motion.span>Our speciality</h1>
         <p className="mt-5 text-xl sm:text-4xl font-semibold ">Medical Support For <span className="bg-gradient-to-r from-[#0096FF] to-[#00EDFF] bg-clip-text text-transparent">Every Need</span> </p>
 
         

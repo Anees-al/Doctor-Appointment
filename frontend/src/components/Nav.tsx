@@ -1,10 +1,10 @@
-
+import  {motion} from  'framer-motion'
 
 const Nav = () => {
 
     const navItems:string[]=['Home','About','Service','Contact']
   return (
-    <div className="flex flex-row justify-between p-4 bg-white">
+    <motion.div className="flex flex-row justify-between p-4 bg-white" initial={{y:-100,opacity:0}} animate={{y:0,opacity:1}} transition={{duration:0.7}}>
       <div>
           <h1 className="text-3xl font-bold">Medi<span className="text-[#0096FF]">Core </span></h1>
       </div>
@@ -22,7 +22,7 @@ const Nav = () => {
       <div>
           <button className="hidden sm:flex px-4 py-2 text-white font-semibold bg-[#0096FF] rounded-lg shadow cursor-pointer hover:shadow-lg hover:bg-[#1F51FF]">Appointment</button>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

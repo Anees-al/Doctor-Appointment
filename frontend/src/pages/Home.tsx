@@ -1,5 +1,7 @@
 import AboutUs from "../components/AboutUs"
 import Banner from "../components/Banner"
+import Banner2 from "../components/Banner2"
+import ClientReview from "../components/ClientReview"
 import Footer from "../components/Footer"
 import Hero from "../components/Hero"
 import Nav from "../components/Nav"
@@ -16,7 +18,10 @@ const Home = () => {
       <AboutUs/>
       <OurSpeciality/>
       <TopSpeciality/>
+      <ClientReview/>
+      <Banner2/>
       <Footer/>
+      
     </div>
   )
 }
