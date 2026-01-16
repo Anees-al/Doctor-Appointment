@@ -1,6 +1,7 @@
 import Nav from "../components/Nav"
 import whitepattern from '../assets/whitepattern.jpg'
 import doctor1 from '../assets/doctor1.jpg'
+import Footer from "../components/Footer"
 
 const DoctorList = () => {
     
@@ -72,6 +73,8 @@ const DoctorList = () => {
                </div>
           </div>
         </div>
+
+        <Footer/>
       
     </div>
   )

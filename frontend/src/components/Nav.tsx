@@ -14,11 +14,11 @@ const navigate=useNavigate();
       </div>
 
       <div className="hidden sm:flex flex-row gap-8">
-     {navItems.map((items)=>(
+     {navItems.map((items,index)=>(
         <p className=' relative inline-block hover:text-[#0096FF] cursor-pointer leading-tight
     after:absolute after:left-0 after:bottom-[7px] 
     after:h-[2px] after:w-0 after:bg-[#0096FF]
-    after:transition-all after:duration-300 hover:after:w-full'>{items}</p>
+    after:transition-all after:duration-300 hover:after:w-full' key={index}>{items}</p>
      ))}
       </div>
 

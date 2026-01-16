@@ -36,11 +36,10 @@ const AboutUs = () => {
           <p className="rounded-lg bg-blue-600 p-2">
             <RxTarget size={26} color="white" />
           </p>
-          <p>Our Missions</p>
+          <p>Our Vissions</p>
         </div>
         <p className="text-lg font-light text-gray-700">
-          To deliver compassionate, patient-first healthcare by combining expert
-          clinical judgment with technology.
+          Empower doctors to detect conditions earlier, improve outcomes, and redefine the future of modern healthcare.
         </p>
       </div>
     </motion.div>

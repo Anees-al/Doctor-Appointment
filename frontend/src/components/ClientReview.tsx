@@ -15,7 +15,7 @@ useEffect(()=>{
 const fetchComments=async()=>{
   try {
     const res=await axios.get('http://localhost:5000/api/user/getallusers');
-    console.log(res)
+    
 
     const onlyComments=res.data.users.filter((user:IUser)=>(
       user.comments && user.comments.trim().length > 0
