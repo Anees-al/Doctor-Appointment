@@ -1,13 +1,39 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { RiDoubleQuotesL } from "react-icons/ri";
 
-const ClientReview = () => {
+interface IUser {
+  username: string;
+  comments?: string;
+}
 
-const comments:{ name: string, comments: string }[]=[
-    {name:'Mathew',comments:'I used to dread calling around to find an available slot. This platform made it so easy to see my doctor’s schedule and book a same-day appointment in under two minutes. Truly a lifesaver!'},
-    {name:'David',comments:'The automated reminders are fantastic. I never miss an appointment now, and I love that I can sync the booking directly to my phones calendar. Very professional and seamless experience.'},
-    {name:'Elena',comments:'It’s hard to find specialists you can trust, but the verified reviews and detailed doctor profiles gave me so much peace of mind. The consultation was excellent, and the check-in process was a breeze.'},
-    {name:'Sarah',comments:'When my daughter woke up with a high fever, I was able to find a pediatrician nearby and book a slot instantly. The interface is clean, fast, and works perfectly on mobile'}
-]
+const ClientReview = () => {
+  const [comments,setcomments]=useState<IUser[]>([]);
+
+
+useEffect(()=>{
+const fetchComments=async()=>{
+  try {
+    const res=await axios.get('http://localhost:5000/api/user/getallusers');
+    console.log(res)
+
+    const onlyComments=res.data.users.filter((user:IUser)=>(
+      user.comments && user.comments.trim().length > 0
+    ))
+    setcomments(onlyComments)
+    console.log(comments);
+  } catch (error:any) {
+    console.log(error)
+  }
+}
+fetchComments();
+},[])
+
+
+
+
+
+
   return (
     <div className="flex flex-col gap-7 justify-center items-center p-10 h-auto">
       <h1 className="px-4 py-2 bg-gradient-to-r from-[#0096FF] to-[#00EDFF] text-white font-semibold text-lg w-[200px] rounded-lg shadow-lg ">Client Reviews</h1>
@@ -22,7 +48,7 @@ What Our  <span className="bg-gradient-to-r from-[#0096FF] to-[#00EDFF] bg-clip-
         <RiDoubleQuotesL size={50} color="#0096FF"/>  <RiDoubleQuotesL size={50} color="white"/>
      <p className="text-sm font-semibold ">{comment.comments}</p>
 
-     <p className="text-xl font-semibold  mt-5 ">{comment.name}</p>
+     <p className="text-xl font-semibold  mt-5 ">{comment.username}</p>
     </div>
 ))}
 </div>
