@@ -1,4 +1,4 @@
-import doctormain from '../assets/doctormain.jpg'
+import doctormain from '../assets/doctormain.webp'
 
 const Hero = () => {
   return (
