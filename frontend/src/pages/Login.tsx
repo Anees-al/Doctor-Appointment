@@ -43,7 +43,7 @@ const Login = () => {
     const handleSubmit=async(e:FormEvent<HTMLFormElement>)=>{
       e.preventDefault()
       try {
-        let url= state==='login'?`${BASE_URL}api/user/login`:`${BASE_URL}api/user/createuser`
+        let url= state==='login'?`${BASE_URL}/api/user/login`:`${BASE_URL}/api/user/createuser`
       
 
         const res= await axios.post(url,formdata);

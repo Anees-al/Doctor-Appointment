@@ -38,7 +38,7 @@ interface ApiProviderProps {
 
 
 export const ApiProvider=({children}:ApiProviderProps)=>{
-    const BASE_URL=import.meta.env.VITE_API_BASE_URL;
+    const BASE_URL=import.meta.env.VITE_API_BASE_URL ??`https://doctor-appointment-backend1-s2f5.onrender.com`;
     const [users,setUsers]=useState<User[] | null>(null);
     const [doctors,setDoctors]=useState<Doctor[] | null>(null);
 
@@ -47,8 +47,8 @@ export const ApiProvider=({children}:ApiProviderProps)=>{
     useEffect(()=>{
         const fetchUsers=async()=>{
              try {
-                const Userres=await axios.get(`${BASE_URL}api/user/getallusers`);
-                const Doctorres=await axios.get(`${BASE_URL}api/doctor/getalldoctors`)
+                const Userres=await axios.get(`${BASE_URL}/api/user/getallusers`);
+                const Doctorres=await axios.get(`${BASE_URL}/api/doctor/getalldoctors`)
                 setUsers(Userres.data.users);
                 setDoctors(Doctorres.data.doctors)
                 
