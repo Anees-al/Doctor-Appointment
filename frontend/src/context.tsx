@@ -38,7 +38,7 @@ interface ApiProviderProps {
 
 
 export const ApiProvider=({children}:ApiProviderProps)=>{
-    const BASE_URL=import.meta.env.VITE_API_URL;
+    const BASE_URL=import.meta.env.VITE_API_BASE_URL;
     const [users,setUsers]=useState<User[] | null>(null);
     const [doctors,setDoctors]=useState<Doctor[] | null>(null);
 
