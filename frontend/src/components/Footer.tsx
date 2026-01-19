@@ -1,6 +1,23 @@
+import { useState,type FormEvent } from 'react'
 import footerbg from '../assets/gpt8.jpg'
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const Footer = () => {
+
+  const [review,setReview]=useState("");
+  const {id}=useParams()
+
+  const handleSubmit=async(e:FormEvent<HTMLFormElement>)=>{
+    e.preventDefault()
+    try {
+      await axios.patch(`http://localhost:5000/api/user/updatecomment/${id}`,{review})
+      setReview("")
+      console.log(review)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <div className='flex flex-col'>
   <div style={{backgroundImage:`url(${footerbg})`,backgroundSize:'cover'}} className='flex flex-col sm:flex-row w-full h-auto p-10 justify-between'>
@@ -35,7 +52,24 @@ const Footer = () => {
 
 
       <div className='hidden sm:flex flex-col'>
-        <h1 className='text-xl font-semibold text-white mb-3'>Keep In touch with us</h1>
+        <form onSubmit={handleSubmit}>
+            <textarea
+              className='w-[500px] h-[100px] bg-white rounded-lg p-5 mt-2 mb-4'
+              value={review}
+              onChange={(e) => setReview(e.target.value)}
+              placeholder="Share your experience..."
+              required
+            />
+
+            <button
+              type="submit"
+              className='bg-[#0096FF] text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-all'
+            >
+              Submit
+            </button>
+          </form>
+
+        <h1 className='text-lg font-semibold text-white mb-2'>Keep In touch with us</h1>
         <p className='text-white'>Subscribe our newsletter to get the latest news and updates From Doccure !</p>
       </div>
     </div>

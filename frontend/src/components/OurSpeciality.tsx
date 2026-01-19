@@ -1,18 +1,20 @@
 import { TbClover } from "react-icons/tb";
 import {motion} from  'framer-motion'
+import { useNavigate } from "react-router-dom";
 
 const OurSpeciality = () => {
-   const department:{ name: string, num: number }[]=[
-    {name:'Urology',num:20},
-    {name:'Orthopedic',num:20},
-    {name:'Cardiologist',num:20},
-    {name:'Dentist',num:20},
-    {name:'Neurology',num:20},
-    {name:'Pediatrics',num:20},
-    {name:'Psychiatrist',num:20},
-    {name:'ENT',num:20},
+   const department:{ name: string, num: number,link:string }[]=[
+    {name:'Urology',num:20,link:'/doctordepartment/Cardiology'},
+    {name:'Orthopedic',num:20,link:'/doctordepartment/Orthopedics'},
+    {name:'Cardiologist',num:20,link:'/doctordepartment/Cardiology'},
+    {name:'Dentist',num:20,link:'/doctordepartment/Cardiology'},
+    {name:'Neurology',num:20,link:'/doctordepartment/Neurology'},
+    {name:'Pediatrics',num:20,link:'/doctordepartment/Cardiology'},
+    {name:'Psychiatrist',num:20,link:'/doctordepartment/Cardiology'},
+    {name:'ENT',num:20,link:'/doctordepartment/Cardiology'},
     
    ]
+   const navigate=useNavigate()
     
   return (
     <div className="flex flex-col bg-white mt-5 w-full h-auto p-4">
@@ -26,7 +28,7 @@ const OurSpeciality = () => {
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mt-10 justify-items-center">
              {department.map(dep=>
              (
-                <div className="flex flex-col  px-4 w-[300px] h-[100px] py-2 bg-gray-100 border border-gray-400 rounded-lg justify-center items-center shadow-lg">
+                <div className="flex flex-col  px-4 w-[300px] h-[100px] py-2 bg-gray-100 border border-gray-400 rounded-lg justify-center items-center shadow-lg" onClick={()=>navigate(dep.link)}>
                     <p className="text-xl font-semibold">{dep.name} </p>
                     <p className="text-sm font-semibold text-gray-900">{dep.num} Doctors </p>
                     </div>

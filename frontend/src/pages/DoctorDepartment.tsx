@@ -2,17 +2,46 @@ import Nav from "../components/Nav"
 import whitepattern from '../assets/whitepattern.jpg'
 import doctor1 from '../assets/doctor1.jpg'
 import Footer from "../components/Footer"
-
+import { useEffect, useState } from "react"
+import axios from "axios"
+import { useParams } from "react-router-dom"
 import { useServer } from "../context"
-import {motion} from 'framer-motion'
 
 
-const DoctorList = () => {
+interface Doctor {
+  _id: string;
+  doctorname: string;
+  department: string;
+  doctorimage: string;
+  fees: number;
+  languages: string[];
+  qualification: string[];
+  experience: number;
+  location:string;
+  hospital:string;
+  available:boolean;
+}
 
-    const {doctors}=useServer()
+const DoctorDepartment = () => {
+    const [doctors,setDoctors]=useState<Doctor[]>([]);
+    const {department}=useParams()
+    const {BASE_URL}=useServer()
 
 
-    
+    useEffect(()=>{
+     const fetchDoctors=async()=>{
+      try {
+        const res=await axios.get(`${BASE_URL}api/doctor/getdoctorsbydepartment/${department}`);
+        setDoctors(res.data.doctors);
+        console.log(doctors)
+
+      } catch (error) {
+        console.log(error)
+      }
+     }
+
+     fetchDoctors();
+    },[])
   return (
     <div >
         <Nav/>
@@ -44,25 +73,38 @@ const DoctorList = () => {
                </div>
 
                <div className="flex flex-col p-10  gap-3">
-                  {doctors?.map((doctor)=>(
-                         <motion.div className="flex flex-col sm:flex-row w-[300px] sm:w-[900px] bg-white h-auto sm:h-[250px] rounded-lg shadow-lg border border-gray-300" initial={{x:200,opacity:0}}  whileInView={{x:0,opacity:1}} transition={{duration:0.7}}>
+                  {doctors.map((doctor)=>(
+                         <div className="flex flex-col sm:flex-row w-[300px] sm:w-[900px] bg-white h-auto sm:h-[270px] rounded-lg shadow-lg border border-gray-300">
                       
                       <img src={doctor1} alt="" className="h-full w-[300px] rounded-l-lg"/>
                       <div className="flex flex-col p-5 w-full">
                         <div className="flex flex-row justify-between">
                         <p className="text-sm font-semibold text-green-500">{doctor.department}</p>
-                       {doctor.available===true? <p className="p-1 px-3 bg-green-300 rounded-lg text-xs font-semibold text-green-700">Available</p>: <p className="p-1 bg-red-300 rounded-lg text-xs font-semibold text-red-700">Not Available</p> }
+                        <div className="hidden sm:flex flex-col text-xs text-white p-2 bg-red-500 rounded-lg font-semibold">
+                              <p>{doctor.hospital}</p>
+                              <p>{doctor.location}</p>
+                            </div>
+                       {doctor.available===true? <p className="p-1 px-3  rounded-lg text-xs font-semibold text-green-700">Available</p>: <p className="p-1 bg-red-300 rounded-lg text-xs font-semibold text-red-700">Not Available</p> }
                         </div>
                        
                        <hr className="border-t-2 border-gray-300 w-full mt-3"/>
 
+                       <div className="sm:hidden flex flex-col mt-2 text-xs text-white p-2 bg-red-500 rounded-lg font-semibold">
+                              <p>{doctor.hospital}</p>
+                              <p>{doctor.location}</p>
+                            </div>
+
                        <div className="flex flex-row justify-between mt-5">
                           <div className="flex flex-col">
                             <p className="font-semibold">{doctor.doctorname}</p>
+
+                            
                             <p className=" flex flex-row gap-2 text-xs text-gray-400">{doctor.qualification.map(q=>(
                               <p >{q}</p>
                             ))}</p>
                           </div>
+
+                          
 
                           <div>
                             <p className="text-sm text-gray-400 text-semibold">{doctor.languages.map(l=>(
@@ -84,10 +126,10 @@ const DoctorList = () => {
                             <p className="text-sm font-semibold text-green-600">9:00 -10:00</p>
                         </div>
 
-                        <button className="text-lg font-semibold text-white p-2  bg-gradient-to-r from-[#0096FF] to-[#00EDFF] rounded-lg shadow-lg cursor-pointer">Book Appointment</button>
+                        <button className="text-lg font-semibold text-white p-1   bg-gradient-to-r from-[#0096FF] to-[#00EDFF] rounded-lg shadow-lg cursor-pointer">Book Appointment</button>
                        </div>
                       </div>
-                   </motion.div>
+                   </div>
                       ))}
                </div>
           </div>
@@ -99,4 +141,4 @@ const DoctorList = () => {
   )
 }
 
-export default DoctorList
+export default DoctorDepartment

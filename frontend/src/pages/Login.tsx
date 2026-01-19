@@ -5,6 +5,7 @@ import axios from 'axios'
 import {toast} from 'react-toastify'
 import { useNavigate } from "react-router-dom"
 import doctorlogin from '../assets/logindoctor.jpg'
+import { useServer } from "../context"
 interface FormData {
   username: string;
   email: string;
@@ -15,6 +16,7 @@ interface FormData {
 const Login = () => {
   
     const [state,setState]=useState('sign up');
+    const {BASE_URL}=useServer()
     const [formdata,setformdata]=useState <FormData>({
       username:'',
       email:'',
@@ -41,7 +43,7 @@ const Login = () => {
     const handleSubmit=async(e:FormEvent<HTMLFormElement>)=>{
       e.preventDefault()
       try {
-        let url= state==='login'?'http://localhost:5000/api/user/login':'http://localhost:5000/api/user/createuser'
+        let url= state==='login'?`${BASE_URL}api/user/login`:`${BASE_URL}api/user/createuser`
       
 
         const res= await axios.post(url,formdata);
