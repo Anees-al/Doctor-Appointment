@@ -1,12 +1,12 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import connectDb from './config/db';
+import connectDb from './config/db.js';
 import cookieParser from 'cookie-parser'
-import userRoute from './routes/userRoute'
-import doctorRoute from './routes/doctorRoute'
+import userRoute from './routes/userRoute.js'
+import doctorRoute from './routes/doctorRoute.js'
 import cors from 'cors'
-import cloudinary from './utils/cloudinary';
-import upload from './middlewares/multer';
+import cloudinary from './utils/cloudinary.js';
+import upload from './middlewares/multer.js';
 dotenv.config()
 connectDb()
 

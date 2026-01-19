@@ -1,4 +1,4 @@
-import doctorModel from "../models/doctorModel";
+import doctorModel from "../models/doctorModel.js";
 import { Request,Response } from "express";
 export const createDoctor=async(req:Request,res:Response)=>{
     try {
