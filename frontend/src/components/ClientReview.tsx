@@ -1,33 +1,16 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { RiDoubleQuotesL } from "react-icons/ri";
 
-interface IUser {
-  username: string;
-  comments?: string;
-}
+
+import { RiDoubleQuotesL } from "react-icons/ri";
+import { useServer } from "../context";
+
 
 const ClientReview = () => {
-  const [comments,setcomments]=useState<IUser[]>([]);
+  
+  const {users}=useServer()
 
 
-useEffect(()=>{
-const fetchComments=async()=>{
-  try {
-    const res=await axios.get('http://localhost:5000/api/user/getallusers');
+const sortedcomments=users?.filter((user)=>(user.comments && user.comments.trim().length > 0))
     
-
-    const onlyComments=res.data.users.filter((user:IUser)=>(
-      user.comments && user.comments.trim().length > 0
-    ))
-    setcomments(onlyComments)
-    console.log(comments);
-  } catch (error:any) {
-    console.log(error)
-  }
-}
-fetchComments();
-},[])
 
 
 
@@ -43,7 +26,7 @@ What Our  <span className="bg-gradient-to-r from-[#0096FF] to-[#00EDFF] bg-clip-
 
 
 <div className="flex flex-col sm:flex-row gap-10">
-{comments.map(comment=>(
+{sortedcomments?.map(comment=>(
     <div className="flex  flex-col w-[300px] h-[350px] text-gray-500  rounded-lg border shadow-lg hover:shadow-xl border-gray-600 p-5 hover:bg-[#0096FF] hover:text-white bg-white">
         <RiDoubleQuotesL size={50} color="#0096FF"/>  <RiDoubleQuotesL size={50} color="white"/>
      <p className="text-sm font-semibold ">{comment.comments}</p>

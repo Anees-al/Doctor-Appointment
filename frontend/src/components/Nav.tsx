@@ -1,12 +1,16 @@
 import  {motion} from  'framer-motion'
 import { useNavigate } from 'react-router-dom'
 
+  interface navItems {
+    names:string
+    link?:string
+  }
 const Nav = () => {
 
 const navigate=useNavigate();
 
 
-    const navItems:string[]=['Home','About','Service','Contact']
+    const navItems:navItems[]=[{names:'Home',link:''},{names:'About',link:''},{names:'Service',link:'#banner'},{names:'Contact',link:''}]
   return (
     <motion.div className="flex flex-row justify-between p-4 bg-white" initial={{y:-100,opacity:0}} animate={{y:0,opacity:1}} transition={{duration:0.7}}>
       <div>
@@ -18,7 +22,7 @@ const navigate=useNavigate();
         <p className=' relative inline-block hover:text-[#0096FF] cursor-pointer leading-tight
     after:absolute after:left-0 after:bottom-[7px] 
     after:h-[2px] after:w-0 after:bg-[#0096FF]
-    after:transition-all after:duration-300 hover:after:w-full' key={index}>{items}</p>
+    after:transition-all after:duration-300 hover:after:w-full' key={index} >{items.names}</p>
      ))}
       </div>
 

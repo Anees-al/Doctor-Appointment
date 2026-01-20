@@ -6,6 +6,7 @@ import DoctorList from './pages/DoctorList'
 import DoctorDepartment from './pages/DoctorDepartment'
 import Admin from './pages/Admin'
 import Doctor from './pages/Doctor'
+import AboutPage from './pages/AboutPage'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
          <Route path='/doctordepartment/:department'  element={<DoctorDepartment/>}/>
          <Route path='/admin' element={<Admin/>}/>
          <Route path='/doctor'  element={<Doctor/>}/>
+         <Route path='/aboutpage' element={<AboutPage/>}/>
       </Routes>
     </div>
   )

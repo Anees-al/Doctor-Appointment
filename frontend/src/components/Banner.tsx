@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Banner = () => {
 const navigate=useNavigate()
   return (
-    <div className="flex flex-col sm:flex-row justify-center items-center sm:bg-white p-3 min-w-screen h-[600px] sm:h-[350px] mt-10 gap-7" >
+    <div className="flex flex-col sm:flex-row justify-center items-center sm:bg-white p-3 min-w-screen h-[600px] sm:h-[350px] mt-10 gap-7" id="banner">
       <motion.div className="flex flex-row justify-between gap-3 shadow-lg shadow-gray-400 sm:shadow-none p-4  rounded-lg bg-white" initial={{y:-200,opacity:0}} whileInView={{y:0,opacity:1}} transition={{duration:0.7}}>
          <div className="hidden sm:flex justify-center items-center w-[70px]  bg-[#0096FF] h-[70px] mt-5  rounded-full shadow">
             <FaUserDoctor size={30} color="white" />

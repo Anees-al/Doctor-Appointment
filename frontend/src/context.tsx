@@ -7,6 +7,8 @@ interface User {
   _id: string;
   name: string;
   email: string;
+  comments:string;
+  username:string
 }
 
 

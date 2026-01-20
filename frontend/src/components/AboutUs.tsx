@@ -3,8 +3,11 @@ import { FaEye } from "react-icons/fa6";
 import { RxTarget } from "react-icons/rx";
 import { TbClover } from "react-icons/tb";
 import {motion} from 'framer-motion'
+import { useNavigate } from 'react-router-dom';
 
 const AboutUs = () => {
+  const navigate=useNavigate();
+
   return (
     <div className='flex flex-row gap-2 px-10 py-2 mt-10 gap-10 '>
      <div className='hidden sm:flex'>
@@ -76,7 +79,7 @@ const AboutUs = () => {
   
      </div>
 
-     <button className='text-lg text-white px-5 py-2 bg-[#0096FF] rounded-lg font-semibold w-[200px] mt-10 cursor-pointer'>Know More</button>
+     <button className='text-lg text-white px-5 py-2 bg-[#0096FF] rounded-lg font-semibold w-[200px] mt-10 cursor-pointer'  onClick={()=>navigate('/aboutpage')}>Know More</button>
      </div>
     </div>
   )

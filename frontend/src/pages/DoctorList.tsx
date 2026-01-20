@@ -1,7 +1,8 @@
 import Nav from "../components/Nav"
 import whitepattern from '../assets/whitepattern.jpg'
-import doctor1 from '../assets/doctor1.jpg'
+
 import Footer from "../components/Footer"
+import profile from '../assets/noprofile.webp'
 
 import { useServer } from "../context"
 import {motion} from 'framer-motion'
@@ -47,7 +48,7 @@ const DoctorList = () => {
                   {doctors?.map((doctor)=>(
                          <motion.div className="flex flex-col sm:flex-row w-[300px] sm:w-[900px] bg-white h-auto sm:h-[250px] rounded-lg shadow-lg border border-gray-300" initial={{x:200,opacity:0}}  whileInView={{x:0,opacity:1}} transition={{duration:0.7}}>
                       
-                      <img src={doctor1} alt="" className="h-full w-[300px] rounded-l-lg"/>
+                      <img src={profile} alt="" className="h-full w-[300px] rounded-l-lg"/>
                       <div className="flex flex-col p-5 w-full">
                         <div className="flex flex-row justify-between">
                         <p className="text-sm font-semibold text-green-500">{doctor.department}</p>
