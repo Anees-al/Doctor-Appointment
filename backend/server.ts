@@ -4,6 +4,7 @@ import connectDb from './config/db.js';
 import cookieParser from 'cookie-parser'
 import userRoute from './routes/userRoute.js'
 import doctorRoute from './routes/doctorRoute.js'
+import appointmentRoute from './routes/appointmentRoute.js'
 import cors from 'cors'
 import cloudinary from './utils/cloudinary.js';
 import upload from './middlewares/multer.js';
@@ -32,7 +33,8 @@ app.use(cors(
 
 
 app.use('/api/user',userRoute);
-app.use('/api/doctor',doctorRoute)
+app.use('/api/doctor',doctorRoute);
+app.use('/api/appointment',appointmentRoute);
 
 
 app.listen(port,()=>console.log(`server is running in the  port ${port}`))
