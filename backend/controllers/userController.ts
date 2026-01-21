@@ -102,6 +102,7 @@ export const logout=async(req:Request,res:Response)=>{
       httpOnly: true,
     secure: true,           
     sameSite: 'none',
+    path:'/'
         
     })
 
