@@ -51,3 +51,14 @@ export const getDoctorByDepartment=async(req:Request,res:Response)=>{
         res.status(400).json({message:error.message})
     }
 }
+
+
+export const getDoctorById=async(req:Request,res:Response)=>{
+    try {
+        const {doctorId}=req.params;
+        const doctor =await doctorModel.findById(doctorId);
+        return res.status(200).json({message:'successfully get the doctor',doctor})
+    } catch (error:any) {
+        res.status(400).json({message:error.message})
+    }
+}
