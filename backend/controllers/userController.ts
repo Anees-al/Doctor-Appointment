@@ -99,9 +99,9 @@ export const login=async(req:Request,res:Response)=>{
 export const logout=async(req:Request,res:Response)=>{
   try {
     res.clearCookie('token',{
-       httpOnly:true,
-        secure:process.env.NODE_ENV === 'production',
-        sameSite:process.env.NODE_ENV === 'production' ?'none':'strict',
+      httpOnly: true,
+    secure: true,           
+    sameSite: 'none',
         
     })
 
