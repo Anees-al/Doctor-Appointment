@@ -2,6 +2,7 @@ import userModel from "../models/userModel.js";
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import {Request,Response} from 'express'
+import {AuthRequest}  from '../types/authtypes.js'
 
 export const createUser=async(req:Request,res:Response)=>{
      try {
@@ -167,6 +168,19 @@ export const updateUserComment=async(req:Request,res:Response)=>{
     return res.status(200).json({message:'successfully updated the user'});
   } catch (error:any) {
     return res.status(400).json({message:error.message});
+  }
+}
+
+
+
+
+export const cheackAuth=async(req:Request,res:Response)=>{
+  try {
+    const authReq = req as AuthRequest;
+    return res.status(200).json({message:'succefully auth',success:true,user:authReq.user});
+
+  } catch (error:any) {
+    return res.status(400).json({message:error.message})
   }
 }
 
