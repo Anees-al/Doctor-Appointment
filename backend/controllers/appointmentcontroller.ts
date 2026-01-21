@@ -8,7 +8,7 @@ export const createAppointment=async(req:Request,res:Response)=>{
     const { doctorId } = req.params;
 
     const authReq = req as AuthRequest;
-    const userId = authReq.user.id;
+    const userId = authReq.user?.id;
 
     const {appointmentDate,time}=req.body;
 
